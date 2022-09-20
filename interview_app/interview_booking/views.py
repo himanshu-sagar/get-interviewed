@@ -6,7 +6,4 @@ from django.views import View
 
 class InterviewApp(View):
     def get(self, request):
-        return HttpResponse("Welcome to Interview Booking APP")
-
-    def post(self, request):
-        return HttpResponse("Your form is submitted successfully")
+        return render(request, template_name='main/index.html', context={})
