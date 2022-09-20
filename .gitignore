@@ -2,3 +2,4 @@ __pycache__/
 
 .vscode
 .env
+interview_app/interview_app/__pycache__/
