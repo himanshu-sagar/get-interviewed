@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import BaseUserManager, AbstractBaseUser
+
 # Create your models here.
 
 
+# https://docs.djangoproject.com/en/4.1/topics/auth/customizing/#a-full-example
 class UserManager(BaseUserManager):
     def create_user(self, email, name, tc, password=None, password2=None):
         """
