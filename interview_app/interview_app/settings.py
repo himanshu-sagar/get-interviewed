@@ -12,9 +12,9 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 # yapf: disable
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+
 from datetime import timedelta
-load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,8 +86,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'interviewapp',
-        'USER': 'postgres',
-        'PASSWORD': 'h841207s',
+        'USER': os.getenv("POSTGRES_USER"),
+        'PASSWORD': os.getenv("POSTGRES_PASSWORD"),
         'HOST': 'localhost',
         'PORT': '5432',
         'TEST': {
@@ -183,8 +183,7 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8080",
-    "http://127.0.0.1:9000",
+    "http://127.0.0.1:9000"
 ]
 
 CORS_ALLOW_METHODS = [
@@ -195,3 +194,13 @@ CORS_ALLOW_METHODS = [
     "POST",
     "PUT",
 ]
+
+PASSWORD_RESET_TimeOUT=900
+
+# Email Configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 587
+EMAIL_HOST_USER = os.getenv("EMAIL")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL_USE_TLS = True
